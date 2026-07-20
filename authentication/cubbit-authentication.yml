@@ -1,0 +1,30 @@
+generated: '2026-07-18'
+method: searched
+source: https://docs.cubbit.io/getting-started/quickstart
+docs: https://docs.cubbit.io/guides/s3-api
+description: >-
+  Authentication profile for the Cubbit DS3 S3-compatible API. DS3 uses AWS S3
+  authentication: an access key ID and secret access key signed with AWS
+  Signature Version 4. Credentials are created per project in the DS3 web
+  console (Access key menu) and downloaded as a CSV. There is no OAuth surface
+  on the storage API itself (the console login uses a separate OIDC flow that is
+  not the API auth mechanism).
+summary:
+  types: [awsSigV4]
+  api_key_in: [signed-request]
+  oauth2_flows: []
+schemes:
+- name: AWSSignatureV4
+  type: awsSigV4
+  scheme: aws-sigv4
+  description: >-
+    AWS Signature Version 4 request signing using an access key ID and secret
+    access key, identical to Amazon S3. Compatible with the AWS SDKs and AWS CLI
+    when pointed at the s3.cubbit.eu endpoint.
+  region: eu-west-1
+  endpoint: https://s3.cubbit.eu
+  credential_source: DS3 web console (console.cubbit.eu) → project → Access key → Create access key
+  sources: [docs.cubbit.io/getting-started/quickstart, docs.cubbit.io/guides/s3-api]
+notes:
+- Custom tenants sign against https://s3.<tenant>.cubbit.eu.
+- Secret access keys are shown once at creation and downloaded as CSV.
