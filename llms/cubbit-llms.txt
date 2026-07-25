@@ -1,0 +1,34 @@
+# Cubbit
+
+> Cubbit is a European cloud storage provider offering DS3, a sovereign, geo-distributed, S3-compatible object storage platform. DS3 encrypts (AES-256), fragments, and replicates data across multiple user-selected European locations using Reed-Solomon erasure coding. It ships as DS3 Cloud (managed, geo-redundant, TBs to PBs) and DS3 Composer (self-hosted software-defined storage). The storage plane is AWS S3-compatible (endpoint https://s3.cubbit.eu, region eu-west-1, AWS Signature Version 4), so existing S3 SDKs and tools work unchanged.
+
+## APIs
+- [Cubbit DS3 S3-Compatible API](https://docs.cubbit.io/guides/s3-api): AWS S3-compatible object storage — buckets, objects, multipart upload, versioning, object lock (COMPLIANCE/GOVERNANCE + legal hold), object tagging. Base URL https://s3.cubbit.eu, region eu-west-1.
+
+## Docs
+- [Documentation](https://docs.cubbit.io/)
+- [Quickstart](https://docs.cubbit.io/getting-started/quickstart)
+- [What is Cubbit DS3](https://docs.cubbit.io/getting-started/what-is-cubbit-ds3)
+- [S3 API guide](https://docs.cubbit.io/guides/s3-api)
+- [AWS CLI integration](https://docs.cubbit.io/integrations/aws-cli)
+- [rclone integration](https://docs.cubbit.io/integrations/rclone)
+
+## Authentication
+- Access key ID + secret access key, signed with AWS Signature Version 4.
+- Create keys in the DS3 web console: https://console.cubbit.eu/signin → project → Access key → Create access key.
+
+## Tools
+- [composer-cli](https://github.com/cubbit/composer-cli): official DS3 Composer CLI (Go).
+- AWS CLI / rclone / Cyberduck / Veeam: standard S3 tools pointed at https://s3.cubbit.eu.
+
+## Company
+- [Pricing](https://www.cubbit.io/pricing)
+- [Status](https://status.cubbit.io/)
+- [Blog](https://blog.cubbit.io/)
+- [Support](https://www.cubbit.io/support)
+- [Certifications](https://www.cubbit.io/legal/certifications): ISO 27001/27017/27018/9001/20000-1/22301, GDPR, NIS2, ACN PA Cloud.
+- [Bug bounty (Unguess)](https://www.cubbit.io/bug-bounty-program)
+- [Terms of Service](https://www.cubbit.io/legal/ds3-terms-of-service)
+- [Privacy Policy](https://www.cubbit.io/legal/privacy-policy)
+- [SLA](https://www.cubbit.io/legal/service-level-agreement)
+- [GitHub](https://github.com/cubbit)

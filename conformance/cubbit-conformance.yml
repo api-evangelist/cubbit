@@ -1,0 +1,49 @@
+generated: '2026-07-18'
+method: searched
+source: https://www.cubbit.io/legal/certifications
+description: >-
+  Standards and compliance posture for Cubbit DS3. The storage API conforms to
+  the AWS S3 REST API surface (a large subset) with AWS Signature Version 4
+  authentication; errors follow the S3 XML error model. Cubbit publishes a
+  certifications page enumerating externally audited ISO certifications plus
+  GDPR/NIS2 alignment and Italian ACN PA Cloud qualification.
+standards:
+- id: aws-s3-api
+  conforms: true
+  evidence: DS3 exposes an AWS S3-compatible REST API at s3.cubbit.eu (buckets, objects, multipart, versioning, object lock, tagging).
+- id: aws-sigv4
+  conforms: true
+  evidence: Requests are authenticated with AWS Signature Version 4 (access key ID + secret access key).
+- id: s3-object-lock
+  conforms: true
+  evidence: Supports COMPLIANCE and GOVERNANCE retention modes plus legal holds (S3 Object Lock semantics).
+- id: rfc9457-problem-details
+  conforms: false
+  evidence: Errors use the S3 XML error envelope (Code/Message), not application/problem+json.
+- id: iso-27001
+  conforms: true
+  evidence: ISO/IEC 27001:2022 (Information Security Management) — https://www.cubbit.io/legal/certifications
+- id: iso-27017
+  conforms: true
+  evidence: ISO/IEC 27017:2015 (Cloud Security)
+- id: iso-27018
+  conforms: true
+  evidence: ISO/IEC 27018:2019 (Privacy in cloud / PII protection)
+- id: iso-9001
+  conforms: true
+  evidence: ISO 9001:2015 (Quality Management)
+- id: iso-20000-1
+  conforms: true
+  evidence: ISO/IEC 20000-1:2018 (IT Service Management)
+- id: iso-22301
+  conforms: true
+  evidence: ISO 22301:2019 (Business Continuity Management)
+- id: gdpr
+  conforms: true
+  evidence: GDPR compliance asserted; data kept within user-selected European locations.
+- id: nis2
+  conforms: true
+  evidence: NIS2 alignment asserted on certifications page.
+- id: acn-pa-cloud
+  conforms: true
+  evidence: Italian Agency for National Cybersecurity (ACN) PA Cloud qualification.

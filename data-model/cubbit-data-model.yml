@@ -1,0 +1,50 @@
+generated: '2026-07-18'
+method: derived
+source: >-
+  Derived from the documented DS3 S3-compatible object model (buckets, objects,
+  versions, tags, object-lock, access keys) at https://docs.cubbit.io.
+description: >-
+  Entity-relationship model of the Cubbit DS3 platform, derived from the S3
+  object model DS3 implements plus the console concepts (project, access key).
+  DS3 has no published OpenAPI, so relationships are derived from the documented
+  resource hierarchy rather than $ref graphs.
+entities:
+- name: Project
+  description: Console-level tenant grouping that owns access keys and buckets.
+- name: AccessKey
+  description: Access key ID + secret access key pair used for AWS SigV4 auth; created per project.
+- name: Bucket
+  description: Top-level container for objects; supports versioning and object lock.
+- name: Object
+  description: A stored object (key + data + metadata) within a bucket.
+- name: ObjectVersion
+  description: A specific version of an object when bucket versioning is enabled.
+- name: ObjectTag
+  description: Key/value tag attached to an object (PutObjectTagging).
+- name: ObjectLock
+  description: Retention (COMPLIANCE/GOVERNANCE) and legal-hold state on an object version.
+relationships:
+- from: Project
+  type: has_many
+  to: AccessKey
+  via: project
+- from: Project
+  type: has_many
+  to: Bucket
+  via: project
+- from: Bucket
+  type: has_many
+  to: Object
+  via: bucket
+- from: Object
+  type: has_many
+  to: ObjectVersion
+  via: versionId
+- from: Object
+  type: has_many
+  to: ObjectTag
+  via: key
+- from: ObjectVersion
+  type: has_one
+  to: ObjectLock
+  via: versionId

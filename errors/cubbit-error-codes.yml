@@ -1,0 +1,39 @@
+generated: '2026-07-18'
+method: derived
+source: >-
+  Live probe of https://s3.cubbit.eu (HTTP responses observed at profiling time)
+  plus the AWS S3 error model that DS3 implements.
+description: >-
+  Cubbit DS3 returns AWS S3-style errors as an XML envelope. The gateway also
+  emits a Cubbit-specific numeric error code in an x-error-code response header
+  (observed value 0011 on an unauthenticated request to the endpoint root).
+  Because DS3 is S3-compatible, the full error set follows the AWS S3 error
+  codes; the entries below are the ones directly observed or implied by the
+  documented, supported operation surface.
+format: s3-xml
+envelope:
+  content_type: application/xml
+  fields: [Code, Message, Resource, RequestId]
+  vendor_header: x-error-code
+problems:
+- http_status: 405
+  code: MethodNotAllowed
+  observed: true
+  note: Returned for an unsupported method against the endpoint root; x-error-code 0011 observed.
+- http_status: 403
+  code: AccessDenied
+  observed: true
+  note: Returned for unauthenticated/unauthorized S3 requests.
+- http_status: 403
+  code: SignatureDoesNotMatch
+  observed: false
+  note: Standard S3 SigV4 signature mismatch.
+- http_status: 404
+  code: NoSuchBucket
+  observed: false
+- http_status: 404
+  code: NoSuchKey
+  observed: false
+- http_status: 400
+  code: InvalidAccessKeyId
+  observed: false

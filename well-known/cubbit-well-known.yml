@@ -1,0 +1,47 @@
+generated: '2026-07-18'
+method: searched
+description: >-
+  Results of probing the /.well-known/ discovery surface for the Cubbit hosts
+  in apis.yml (cubbit.io, docs.cubbit.io) and the DS3 S3 endpoint / console.
+  Status is the HTTP code observed at fetch time. console.cubbit.eu answers 200
+  for openid-configuration and oauth-authorization-server, but the body is the
+  DS3 Console single-page-app HTML shell, not a real OIDC/OAuth JSON document,
+  so it is recorded as present-but-not-a-real-document and not saved verbatim.
+  No genuine well-known document (security.txt, OIDC, OAuth AS, api-catalog,
+  ai-plugin) was found, so no WellKnown/SecurityTxt pointer is emitted.
+hosts:
+- host: https://cubbit.io
+  documents:
+  - path: /.well-known/security.txt
+    status: 404
+  - path: /.well-known/openid-configuration
+    status: 404
+  - path: /.well-known/oauth-authorization-server
+    status: 404
+  - path: /.well-known/api-catalog
+    status: 404
+  - path: /.well-known/ai-plugin.json
+    status: 404
+- host: https://www.cubbit.io
+  documents:
+  - path: /.well-known/security.txt
+    status: 404
+- host: https://docs.cubbit.io
+  documents:
+  - path: /.well-known/security.txt
+    status: 404
+  - path: /llms.txt
+    status: 404
+- host: https://s3.cubbit.eu
+  documents:
+  - path: /.well-known/security.txt
+    status: 404
+    note: S3 endpoint returns AWS-style XML (HTTP 405/403) for non-S3 paths.
+- host: https://console.cubbit.eu
+  documents:
+  - path: /.well-known/openid-configuration
+    status: 200
+    note: Returns the DS3 Console SPA HTML shell, not a real OIDC discovery JSON document — not saved.
+  - path: /.well-known/oauth-authorization-server
+    status: 200
+    note: Returns the DS3 Console SPA HTML shell, not a real OAuth AS metadata document — not saved.

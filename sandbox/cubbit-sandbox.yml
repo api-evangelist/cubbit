@@ -1,0 +1,21 @@
+generated: '2026-07-18'
+method: searched
+source: https://www.cubbit.io/
+description: >-
+  Cubbit DS3 offers a free trial environment separate from production. The trial
+  runs on its own console and S3 endpoint host, so sandbox testing is host-based
+  rather than test-key-prefix based. No published magic test values or test
+  fixtures were found — real credentials created in the trial console sign real
+  S3 requests against the trial endpoint.
+environments:
+- name: production
+  console: https://console.cubbit.eu/signin
+  s3_endpoint: https://s3.cubbit.eu
+  region: eu-west-1
+- name: trial
+  console: https://console.trial.cubbit.eu/signin
+  s3_endpoint: https://s3.trial.cubbit.eu
+  region: eu-west-1
+  note: Free trial. Listed in the bug-bounty in-scope hosts as s3.trial.cubbit.eu.
+test_values:
+  note: No published static test cards / magic identifiers — object storage; the trial is a real isolated tenant.

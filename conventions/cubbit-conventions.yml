@@ -1,0 +1,46 @@
+generated: '2026-07-18'
+method: searched
+source: https://docs.cubbit.io/guides/s3-api
+description: >-
+  Cross-cutting request/response conventions for the Cubbit DS3 S3-compatible
+  API. Because DS3 implements the AWS S3 REST contract, its conventions are S3's:
+  SigV4 auth, XML error envelope, S3-style listing pagination, and method-level
+  idempotency (PUT/DELETE are idempotent by definition — there is no separate
+  idempotency-key header).
+base_url: https://s3.cubbit.eu
+region: eu-west-1
+api_style: AWS S3-compatible REST over HTTPS; XML request/response bodies for control operations, binary for objects.
+authentication:
+  scheme: AWS Signature Version 4 (access key ID + secret access key)
+  detail: authentication/cubbit-authentication.yml
+  docs: https://docs.cubbit.io/getting-started/quickstart
+idempotency:
+  supported: true
+  mechanism: HTTP method semantics (S3) — PUT and DELETE are idempotent; there is no Idempotency-Key header.
+  note: DS3 does not implement a separate client-supplied idempotency-key contract.
+pagination:
+  style: s3-listing
+  request_params:
+    max-keys: page size for ListObjects/ListObjectsV2
+    continuation-token: ListObjectsV2 cursor for the next page
+    marker: ListObjects (v1) cursor
+  response_fields:
+    IsTruncated: whether more results exist
+    NextContinuationToken: cursor to fetch the next page (v2)
+  docs: https://docs.cubbit.io/guides/s3-api
+versioning:
+  object_versioning: supported (S3 bucket versioning)
+  object_lock: COMPLIANCE and GOVERNANCE retention modes plus legal hold
+error_envelope:
+  format: s3-xml
+  fields: [Code, Message, Resource, RequestId]
+  extra_header: x-error-code (Cubbit-specific numeric error code observed on the s3.cubbit.eu gateway)
+  detail: errors/cubbit-error-codes.yml
+rate_limit_signaling:
+  documented: false
+  note: No published rate-limit response headers found at profiling time.
+unsupported:
+  note: >-
+    Documented as NOT supported on DS3 at profiling time — bucket tagging,
+    bucket policies, replication, bucket-level encryption config, and event
+    notifications (so there is no S3 event/webhook surface).

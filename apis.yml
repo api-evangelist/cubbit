@@ -1,25 +1,129 @@
 aid: cubbit
 name: Cubbit
-description: Cubbit is a company surfaced as a portfolio company of techstars and added to the API Evangelist
-  network as a stub for enrichment. This profile is a lead awaiting the enrichment pipeline.
+description: >-
+  Cubbit is a European cloud storage provider offering DS3, a sovereign,
+  geo-distributed, S3-compatible object storage platform. DS3 encrypts
+  (AES-256), fragments, and replicates data across multiple user-selected
+  locations using Reed-Solomon erasure coding, delivering geo-resilience
+  and data sovereignty within Europe. It ships in two forms: DS3 Cloud, a
+  ready-to-use managed geo-redundant object store (TBs to PBs), and DS3
+  Composer, self-hosted software-defined storage you run on your own
+  hardware (200 TB+). The storage plane exposes an AWS S3-compatible API at
+  https://s3.cubbit.eu (region eu-west-1), authenticated with access key /
+  secret key and AWS Signature Version 4, so existing S3 SDKs, the AWS CLI,
+  rclone, Cyberduck, Veeam and other S3 tooling work unchanged. Cubbit is
+  certified to ISO/IEC 27001, 27017, 27018, 9001, 20000-1 and 22301, and is
+  GDPR- and NIS2-aligned with Italian ACN PA Cloud qualification.
 url: https://raw.githubusercontent.com/api-evangelist/cubbit/refs/heads/main/apis.yml
 x-type: company
 x-source: vc-portfolio
 x-backed-by:
 - techstars
-x-tier: stub
-x-tier-reason: portfolio-lead
+x-tier: profiled
+x-tier-reason: enrichment-pipeline
+accessModel:
+  pricing: unknown
+  onboarding: unknown
+  trial: false
+  try_now: false
+  public: false
+  label: Unknown
+  confidence: low
+  source:
+  - authentication
+  generated: '2026-07-22'
+  method: derived
 specificationVersion: '0.20'
 created: '2026-07-17'
-modified: '2026-07-17'
+modified: '2026-07-18'
+image: https://cdn.prod.website-files.com/67a4c547ac46cdf433fcc313/67c76518961dec2a8b897c21_og-homepage.webp
 tags:
+- Object Storage
+- Cloud Storage
+- S3 Compatible
+- Storage
+- Data Sovereignty
+- Geo-Distributed
+- Infrastructure
 - Company
-apis: []
+apis:
+- name: Cubbit DS3 S3-Compatible API
+  description: >-
+    The AWS S3-compatible object storage API for Cubbit DS3. Supports bucket
+    create/delete/list, object upload/download/copy/delete, multipart upload,
+    object versioning, object lock (COMPLIANCE and GOVERNANCE retention plus
+    legal hold), and object tagging. Authenticated with access key ID and
+    secret access key using AWS Signature Version 4 against the s3.cubbit.eu
+    endpoint (region eu-west-1); custom tenants use s3.<tenant>.cubbit.eu.
+  humanURL: https://docs.cubbit.io/guides/s3-api
+  baseURL: https://s3.cubbit.eu
+  properties:
+  - type: Documentation
+    url: https://docs.cubbit.io/guides/s3-api
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
 - FN: APIs.json
   email: info@apis.io
 common:
+- type: DomainSecurity
+  url: security/cubbit-domain-security.yml
 - type: Website
   url: https://cubbit.io/
+- type: DeveloperPortal
+  url: https://docs.cubbit.io/
+- type: Documentation
+  url: https://docs.cubbit.io/
+- type: APIReference
+  url: https://docs.cubbit.io/guides/s3-api
+- type: GettingStarted
+  url: https://docs.cubbit.io/getting-started/quickstart
+- type: Support
+  url: https://www.cubbit.io/support
+- type: Blog
+  url: https://blog.cubbit.io/
+- type: StatusPage
+  url: https://status.cubbit.io/
+- type: GitHubOrganization
+  url: https://github.com/cubbit
+- type: Pricing
+  url: https://www.cubbit.io/pricing
+- type: SignUp
+  url: https://console.cubbit.eu/signin
+- type: TermsOfService
+  url: https://www.cubbit.io/legal/ds3-terms-of-service
+- type: PrivacyPolicy
+  url: https://www.cubbit.io/legal/privacy-policy
+- type: Authentication
+  url: authentication/cubbit-authentication.yml
+- type: Lifecycle
+  url: lifecycle/cubbit-lifecycle.yml
+- type: Conventions
+  url: conventions/cubbit-conventions.yml
+- type: ErrorCatalog
+  url: errors/cubbit-error-codes.yml
+- type: Packages
+  url: packages/cubbit-packages.yml
+- type: CLI
+  url: cli/cubbit-cli.yml
+- type: Sandbox
+  url: sandbox/cubbit-sandbox.yml
+- type: DataModel
+  url: data-model/cubbit-data-model.yml
+- type: LLMsTxt
+  url: llms/cubbit-llms.txt
+- type: Conformance
+  url: conformance/cubbit-conformance.yml
+- type: Compliance
+  url: https://www.cubbit.io/legal/certifications
+- type: TrustCenter
+  url: security/cubbit-trust-center.yml
+- type: VulnerabilityDisclosure
+  url: security/cubbit-vulnerability-disclosure.yml
+- type: Security
+  url: https://www.cubbit.io/bug-bounty-program
+x-enrichment:
+  date: '2026-07-19'
+  status: backfilled
+  pass: local-v1
+  note: backfilled from .gitignore signal + verified work evidence

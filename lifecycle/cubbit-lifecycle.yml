@@ -1,0 +1,19 @@
+generated: '2026-07-18'
+method: searched
+source: https://status.cubbit.io/
+description: >-
+  Operational lifecycle for the Cubbit DS3 platform. Versioning follows the AWS
+  S3 API contract (S3 REST). Cubbit publishes a public status page and a Service
+  Level Agreement. No dated public API deprecation policy or RFC 8594
+  Sunset/Deprecation header program was found at profiling time.
+versioning:
+  scheme: s3-compatible
+  detail: DS3 tracks the AWS S3 REST API surface; there is no separately versioned Cubbit API path.
+  docs: https://docs.cubbit.io/guides/s3-api
+sla:
+  url: https://www.cubbit.io/legal/service-level-agreement
+status_page: https://status.cubbit.io/
+deprecation:
+  policy_url: null
+  sunset_header: null
+  note: No public dated deprecation policy or Sunset-header program found.

@@ -1,0 +1,23 @@
+generated: '2026-07-18'
+method: searched
+source: https://github.com/cubbit/composer-cli
+description: >-
+  Cubbit's first-party command-line tool is composer-cli, the official CLI for
+  DS3 Composer (the self-hosted software-defined storage plane). For the DS3 S3
+  object-storage API, Cubbit documents the standard AWS CLI pointed at the
+  s3.cubbit.eu endpoint rather than a bespoke S3 CLI.
+clis:
+- name: composer-cli
+  scope: DS3 Composer management plane
+  language: go
+  repo: https://github.com/cubbit/composer-cli
+  install: See GitHub releases — https://github.com/cubbit/composer-cli/releases
+  official: true
+- name: aws (S3 access)
+  scope: DS3 Cloud object storage (S3-compatible)
+  official: false
+  usage: aws s3 --endpoint https://s3.cubbit.eu ls
+  docs: https://docs.cubbit.io/integrations/aws-cli
+  note: >-
+    Standard AWS CLI configured with a DS3 access key/secret and region
+    eu-west-1; not a first-party Cubbit binary but the documented S3 CLI path.

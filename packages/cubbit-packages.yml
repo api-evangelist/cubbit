@@ -1,0 +1,32 @@
+generated: '2026-07-18'
+method: searched
+source: https://github.com/cubbit
+description: >-
+  First-party Cubbit packages found on the cubbit GitHub organization and the
+  Homebrew tap. Cubbit DS3 does not publish a dedicated first-party S3 client
+  SDK — the storage plane is AWS S3-compatible, so Cubbit directs developers to
+  the standard AWS SDKs and S3 tooling (AWS CLI, rclone, Cyberduck) which are
+  third-party. The one official command-line tool is composer-cli, the DS3
+  Composer management CLI (Go). The Homebrew tap ships the Cubbit desktop app
+  cask (consumer client), not the DS3 SDK.
+packages:
+- language: go
+  registry: github-releases
+  name: composer-cli
+  url: https://github.com/cubbit/composer-cli
+  install: See https://github.com/cubbit/composer-cli/releases
+  official: true
+  note: Official Cubbit DS3 Composer CLI (management plane for self-hosted DS3 Composer).
+- language: shell
+  registry: homebrew
+  name: cubbit
+  url: https://github.com/cubbit/homebrew-tap
+  install: brew install --cask cubbit/tap/cubbit
+  official: true
+  note: Homebrew cask for the Cubbit desktop application (consumer client), not the DS3 S3 SDK.
+third_party_s3_clients:
+  note: >-
+    Because DS3 is AWS S3-compatible, Cubbit's documented client path is the
+    standard AWS SDKs and S3 tools (AWS CLI, rclone, Cyberduck, S3 Browser,
+    Veeam). These are not first-party and are catalogued here for completeness
+    only, so no SDKs pointer is emitted.
