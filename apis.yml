@@ -33,7 +33,7 @@ accessModel:
   - authentication
   generated: '2026-07-22'
   method: derived
-specificationVersion: '0.20'
+specificationVersion: '0.23'
 created: '2026-07-17'
 modified: '2026-07-18'
 image: https://cdn.prod.website-files.com/67a4c547ac46cdf433fcc313/67c76518961dec2a8b897c21_og-homepage.webp
