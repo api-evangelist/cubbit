@@ -1,0 +1,12 @@
+fetched: '2026-10-13'
+method: fetched
+source: https://docs.cubbit.io/
+page: https://docs.cubbit.io/
+file: cubbit-aws-s3-1.md
+bytes: 1103
+sha256: f1a43c77f96c6fe3d1ac7bc910aea08360bea3acaf2ddca08cd51c604a11d515
+anchor: amazon-web-services
+shape: aws-s3
+classification: declares-compatibility
+quote: 'Discover DS3, Cubbit''s fully-managed object storage solution: hyper-resilient, sovereign, and fully S3-compatible.'
+note: text extracted from the provider's own page (tags stripped), saved for evidence
